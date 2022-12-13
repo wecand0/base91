@@ -1,8 +1,8 @@
-#include <iostream>
+#include <base91.h>
+
 #include <string>
 #include <memory>
-
-#include <base91.h>
+#include <iostream>
 
 int main() {
     std::shared_ptr<Base91> base91 = std::make_shared<Base91>();
