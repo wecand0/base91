@@ -1,3 +1,3 @@
-# base91
+# basE91
 
-Base91 with standard alphabet : ``ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!#$%&()*+,./:;<=>?@[]^_`{|}~\``
+Base91 with standard alphabet.
