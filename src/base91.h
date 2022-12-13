@@ -1,5 +1,5 @@
-#ifndef BASE85_BASE91_H
-#define BASE85_BASE91_H
+#ifndef BASE91_H
+#define BASE91_H
 
 #include <string>
 
@@ -47,4 +47,4 @@ private:
             91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91};
 };
 
-#endif//BASE85_BASE91_H
+#endif//BASE91_H
