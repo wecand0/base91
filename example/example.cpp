@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <memory>
-#include <string_view>
 
 int main() {
     std::shared_ptr<Base91> base91 = std::make_shared<Base91>();
