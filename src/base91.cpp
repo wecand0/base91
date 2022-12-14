@@ -1,7 +1,8 @@
 #include "base91.h"
 
+
 std::string Base91::encode(const std::string &data) const {
-    if(data.empty()){
+    if (data.empty()) {
         return {};
     }
 
@@ -11,16 +12,16 @@ std::string Base91::encode(const std::string &data) const {
 
     std::string out;
     uint32_t data_size = data.size();
-    out.reserve(16 * data_size / 13);
+    out.reserve(16 * data_size / b91word_bit);
 
     for (uint32_t len = data_size; len--;) {
         queue |= *ib++ << nbits;
         nbits += 8;
-        if (nbits > 13) { /* enough bits in queue */
+        if (nbits > b91word_bit) { /* enough bits in queue */
             uint32_t val = queue & 8191;
             if (val > 88) {
-                queue >>= 13;
-                nbits -= 13;
+                queue >>= b91word_bit;
+                nbits -= b91word_bit;
             } else { /* we can take 14 bits */
                 val = queue & 16383;
                 queue >>= 14;
@@ -30,7 +31,6 @@ std::string Base91::encode(const std::string &data) const {
             out += basicAlphabet_[val / 91];
         }
     }
-
     if (nbits) {
         out += basicAlphabet_[queue % 91];
         if (nbits > 7 || queue > 90) {
@@ -41,10 +41,9 @@ std::string Base91::encode(const std::string &data) const {
 }
 
 std::string Base91::decode(const std::string &data) const {
-    if(data.empty()){
+    if (data.empty()) {
         return {};
     }
-
     const uint8_t *ib = (uint8_t *) data.c_str();
     uint32_t queue{};
     uint32_t nbits{};
@@ -60,7 +59,7 @@ std::string Base91::decode(const std::string &data) const {
         else {
             val += d * 91;
             queue |= val << nbits;
-            nbits += (val & 8191) > 88 ? 13 : 14;
+            nbits += (val & 8191) > 88 ? b91word_bit : 14;
             do {
                 out += char(queue);
                 queue >>= 8;
@@ -69,11 +68,9 @@ std::string Base91::decode(const std::string &data) const {
             val = -1; /* mark value complete */
         }
     }
-
     /* process remaining bits; write at most 1 byte */
     if (val != -1) {
         out += char(queue | val << nbits);
     }
-
     return out;
 }

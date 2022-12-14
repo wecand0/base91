@@ -1,6 +1,5 @@
 #include <gtest/gtest.h>
-
-#include "base91.h"
+#include <base91.h>
 
 TEST(DataTest, IsDecoded) {
     std::shared_ptr<Base91> base91 = std::make_shared<Base91>();

@@ -9,6 +9,7 @@ public:
     [[nodiscard]] std::string decode(const std::string &data) const;
 
 private:
+    const uint8_t b91word_bit = 13;
     const char basicAlphabet_[91] = {
             'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
             'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
