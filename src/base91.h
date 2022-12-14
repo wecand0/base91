@@ -5,8 +5,8 @@
 
 class Base91 {
 public:
-    std::string encode(const std::string &binary);
-    std::string decode(const std::string &text);
+    [[nodiscard]] std::string encode(const std::string &data) const;
+    [[nodiscard]] std::string decode(const std::string &data) const;
 
 private:
     const char basicAlphabet_[91] = {
