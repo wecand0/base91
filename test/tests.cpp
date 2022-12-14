@@ -1,10 +1,6 @@
-//
-// Created by user on 14.12.22.
-//
+#include <gtest/gtest.h>
 
 #include "base91.h"
-
-#include <gtest/gtest.h>
 
 TEST(DataTest, IsDecoded) {
     std::shared_ptr<Base91> base91 = std::make_shared<Base91>();
