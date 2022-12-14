@@ -6,7 +6,7 @@ std::string Base91::encode(const std::string &data) const {
     uint32_t queue{};
     uint32_t nbits{};
 
-    for (size_t len = data.size(); len--;) {
+    for (uint32_t len = data.size(); len--;) {
         queue |= *ib++ << nbits;
         nbits += 8;
         if (nbits > 13) { /* enough bits in queue */
@@ -41,7 +41,7 @@ std::string Base91::decode(const std::string &data) const {
     uint32_t nbits{};
     uint32_t val = -1;
 
-    for (size_t len = data.size(); len--;) {
+    for (uint32_t len = data.size(); len--;) {
         uint32_t d = decAlphabet_[*ib++];
         if (d == 91)
             continue; /* ignore non-alphabet chars */
