@@ -1,6 +1,7 @@
 #include "base91.h"
 
-bool Base91::encode(std::string &out, const std::string &binary) {
+std::string Base91::encode(const std::string &binary) {
+    std::string out;
     const uint8_t *ib = (uint8_t *) binary.c_str();
     uint32_t queue {};
     uint32_t nbits {};
@@ -29,12 +30,13 @@ bool Base91::encode(std::string &out, const std::string &binary) {
             out += basicAlphabet_[queue / 91];
         }
     }
-    return true;
+    return out;
 }
 
-bool Base91::decode(std::string &out, const std::string &text) {
-    const uint8_t *ib = (uint8_t *) text.c_str();
+std::string Base91::decode(const std::string &text) {
+    std::string out;
 
+    const uint8_t *ib = (uint8_t *) text.c_str();
     uint32_t queue {};
     uint32_t nbits {};
     uint32_t val = -1;
@@ -59,7 +61,9 @@ bool Base91::decode(std::string &out, const std::string &text) {
     }
 
     /* process remaining bits; write at most 1 byte */
-    if (val != -1)
+    if (val != -1){
         out += char(queue | val << nbits);
-    return true;
+    }
+
+    return out;
 }

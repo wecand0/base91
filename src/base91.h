@@ -5,18 +5,8 @@
 
 class Base91 {
 public:
-    std::string encode(const std::string &binary) {
-        std::string out;
-        return encode(out, binary) ? out : std::string();
-    }
-    std::string decode(const std::string &text) {
-        std::string out;
-        return decode(out, text) ? out : std::string();
-    }
-
-private:
-    bool encode(std::string &out, const std::string &binary);
-    bool decode(std::string &out, const std::string &text);
+    std::string encode(const std::string &binary);
+    std::string decode(const std::string &text);
 
 private:
     const char basicAlphabet_[91] = {
