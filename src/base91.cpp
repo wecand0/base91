@@ -1,12 +1,19 @@
 #include "base91.h"
 
 std::string Base91::encode(const std::string &data) const {
-    std::string out;
+    if(data.empty()){
+        return {};
+    }
+
     const uint8_t *ib = (uint8_t *) data.c_str();
     uint32_t queue{};
     uint32_t nbits{};
 
-    for (uint32_t len = data.size(); len--;) {
+    std::string out;
+    uint32_t data_size = data.size();
+    out.reserve(16 * data_size / 13);
+
+    for (uint32_t len = data_size; len--;) {
         queue |= *ib++ << nbits;
         nbits += 8;
         if (nbits > 13) { /* enough bits in queue */
@@ -34,13 +41,16 @@ std::string Base91::encode(const std::string &data) const {
 }
 
 std::string Base91::decode(const std::string &data) const {
-    std::string out;
+    if(data.empty()){
+        return {};
+    }
 
     const uint8_t *ib = (uint8_t *) data.c_str();
     uint32_t queue{};
     uint32_t nbits{};
     uint32_t val = -1;
 
+    std::string out;
     for (uint32_t len = data.size(); len--;) {
         uint32_t d = decAlphabet_[*ib++];
         if (d == 91)
