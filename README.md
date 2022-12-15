@@ -1,4 +1,6 @@
 # basE91
 
-Base91 with standard alphabet.
+golang and cpp
+
+Base91 with rlyeh's modification of standard alphabet.
 

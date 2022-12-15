@@ -6,4 +6,4 @@ add_subdirectory(src)
 add_executable(${PROJECT_NAME} example/example.cpp)
 
 target_link_libraries(${PROJECT_NAME} libbase91cpp)
-target_include_directories(${PROJECT_NAME} PUBLIC src/cpp src/c)
+target_include_directories(${PROJECT_NAME} PUBLIC src/cpp)
