@@ -16,6 +16,5 @@ jobs:
     - name: configure
       run: |
           cd cpp
-          mkdir buidl && cd build
-          cmake ..
+          cmake .
           make -j$(nproc)
