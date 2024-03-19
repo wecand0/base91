@@ -13,7 +13,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: configure
+    - name: install catch2
+      run: |
+        git clone https://github.com/catchorg/Catch2
+        cd Catch2
+        cmake .
+        make -j$(nproc)
+        make install
+    - name: build
       run: |
           cd cpp
           cmake .
