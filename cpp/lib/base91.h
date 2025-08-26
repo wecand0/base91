@@ -1,6 +1,7 @@
 #ifndef BASE91_H
 #define BASE91_H
 
+#include <cstdint>
 #include <string>
 
 class Base91 {

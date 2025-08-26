@@ -2,11 +2,11 @@
 #include <iostream>
 
 int main() {
-    Base91 base91;
     try {
+        Base91 base91;
         base91.encode("hello world");
 
-        auto eString = base91.getData();
+        const auto eString = base91.getData();
         std::cout << eString << std::endl;
 
         base91.decode(eString);
